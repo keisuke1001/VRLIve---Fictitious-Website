@@ -1,0 +1,518 @@
+// All
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Nunito+Sans:wght@300;400;600;700&display=swap');
+
+$bold: 600;
+
+$normal: 400;
+
+$noto: 'Noto Sans JP', sans-serif;
+
+$Nunito: 'Nunito Sans', sans-serif;
+
+$main_Color : #0318CC;
+
+$white: #fff;
+
+$gray: #E8E8E8;
+
+html {
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  vertical-align: bottom;
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.more {
+  text-align: center;
+}
+
+.btn {
+  a {
+    font-size: 1.8rem;
+    font-family: $Nunito;
+    font-weight: $bold;
+    color: $main_Color;
+    border: $main_Color solid 2px;
+    display: inline-block;
+    padding: 5px 0;
+    text-align: center;
+    width: 115px;
+  }
+}
+
+@mixin pc {
+  @media screen and (min-width: 768px){
+    @content;
+  }
+}
+
+@mixin sp {
+  @media screen and (max-width: 767px){
+    @content;
+  }
+}
+
+// Header
+.view {
+  .logo a {
+    color: $main_Color !important;
+  }
+  .line  {
+    background-color: $main_Color !important;
+    &::before {
+      background-color: $main_Color !important;
+    }
+    &::after {
+      background-color: $main_Color !important;
+    }
+  }
+}
+.m_Nav {
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 10;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  .logo a{
+    font-size: 2.9rem;
+    color: $white;
+  }
+}
+
+.g_Nav {
+  position: fixed;
+  background-color: $main_Color;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  visibility: hidden;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+}
+.show_Nav {
+  opacity: 1;
+  visibility: visible;
+}
+
+.local_link {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mNav_item {
+  margin-bottom: 30px;
+  a {
+    color: $white;
+    font-size: 1.6rem;
+    font-weight: 700;
+    font-family: $Nunito;
+  }
+}
+
+@include pc {
+  .m_Nav {
+    max-width: 1080px;
+    padding: 20px;
+    margin: 0 auto;
+    position: static;
+    justify-content: space-between;
+    .logo a{
+      font-size: 2.9rem;
+      color: #000;
+    }
+  }
+  .g_Nav {
+    width: auto;
+    position: static;
+    height: auto;
+    background-color: #fff;
+    opacity: 1;
+    visibility: visible;
+  }
+  .local_link {
+    flex-direction: row;
+    justify-content: start;
+  }
+  .mNav_item {
+    margin-bottom: 0;
+    padding-right: 20px;
+    &:last-of-type {
+      padding-right: 0;
+    }
+    a {
+      color: #000;
+    }
+  }
+}
+
+// Hamburger
+@mixin line {
+  display: block;
+  content: "";
+  width: 40px;
+  height: 3px;
+  border-radius: 3px;
+  background-color: $white;
+  z-index: 100;
+}
+
+.line {
+  @include line;
+  position: relative;
+  &:after {
+    @include line;
+    position: absolute;
+    transform: translateY(-10px);
+  }
+  &::before {
+    @include line;
+    position: absolute;
+    transform: translateY(10px);
+  }
+}
+
+.open_Nav {
+  .line {
+    background-color: transparent;
+  }
+  .line::after {
+    transform: rotate(45deg);
+    background-color: $white;
+  }
+  .line::before {
+    transform: rotate(-45deg);
+    background-color: $white;
+  }
+}
+
+@include pc {
+  .ham_btn{
+    display: none !important;
+  }
+}
+
+.ham_btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+// KeyVisual
+@include sp {
+  .k_Vis {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-image: url(../img/KeyVisual.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+  }
+}
+.k_Vis {
+    .k_inner {
+      color: $main_Color;
+      padding-left: 40px;
+      padding-right: 20px;
+      margin-top: -200px;
+      text-align: left;
+    p {
+      font-size: 5rem;
+      font-family: $noto;
+      font-weight: 700;
+    }
+    .read {
+      font-size: 2.4rem;
+      font-family: $noto;
+      font-weight: 400;
+    }
+  }
+}
+
+.pc_k {
+  display: none;
+}
+
+@include pc {
+  .k_Vis {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    justify-items: center;
+    align-items: center;
+    background-color: $gray;
+  }
+  .k_inner {
+    margin: 0 !important;
+    background-color: $gray;
+  }
+  .pc_k {
+    display: inline;
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+}
+
+// NEWS
+.NEWS {
+  padding: 60px 20px 0 20px;
+  li {
+    padding-bottom: 30px;
+  }
+}
+
+.head_p {
+  padding-bottom: 30px;
+  h2 {
+    font-size: 3.6rem;
+    font-family: $Nunito;
+    font-weight: 700;
+    text-align: center;
+    color: $main_Color;
+  }
+  p {
+    font-size: 1.3rem;
+    font-family: $noto;
+    text-align: center;
+    color: $main_Color;
+  }
+}
+
+.news_data {
+  display: flex;
+  align-items: center;
+  p {
+    font-size: 1.5rem;
+    font-weight: $normal;
+    font-family: $noto;
+    margin-right: 20px;
+  }
+}
+
+.label_cate {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: $bold;
+  font-family: $noto;
+  text-align: center;
+  background-color: $gray;
+  width: 80px;
+  border-radius: 20px;
+}
+
+.news_b {
+  padding-top: 10px;
+  p {
+    font-size: 1.5rem;
+    font-weight: $normal;
+    font-family: $noto;
+  }
+}
+
+@include pc {
+  .NEWS {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+    .head_p {
+      margin-right: 60px;
+      padding: 0;
+    }
+  }
+  .NEWS li {
+    display: flex;
+    align-items: center;
+  }
+  .news_b {
+    padding: 0 0 0 20px;
+  }
+}
+
+// SERVIS
+.servis {
+  padding: 40px 20px 0 20px;
+}
+
+.card {
+  margin-bottom: 40px;
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.s_data {
+  text-align: center;
+  p {
+    padding-top: 10px;
+    font-size: 1.8rem;
+    font-weight: $bold;
+  }
+  .s_read {
+    font-size: 1.4rem;
+    font-weight: $normal;
+  }
+}
+
+@include pc {
+  .servis {
+    padding-bottom: 80px;
+  }
+  .servis_b {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(2, minmax(344px, 480px));
+    gap: 7%;
+  }
+}
+
+
+// COMPANY
+.company {
+  background-color: $gray;
+  padding: 40px 0 70px 0;
+  margin-bottom: 60px;
+}
+.company_b {
+  text-align: center;
+  h3 {
+    font-size: 3.4rem;
+    font-weight: $bold;
+    margin-bottom: 30px;
+  }
+  p {
+    font-size: 1.4rem;
+    font-weight: $normal;
+    line-height: 2;
+    margin-bottom: 30px;
+  }
+  .pc_br {
+    display: none;
+  }
+}
+
+@include pc {
+  .company {
+    margin-bottom: 120px;
+  }
+  .pc_br {
+    display: inline !important;
+  }
+  .sp_br {
+    display: none;
+  }
+}
+
+//RECRUIT
+.recruit {
+  margin-bottom: 60px;
+  .r_read {
+    background-color: $gray;
+  }
+  .head_p {
+    padding-top: 60px;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+  .more {
+    padding-bottom: 60px;
+  }
+}
+.recruit_b {
+  p {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: $normal;
+    line-height: 2;
+    margin-bottom: 30px;
+  }
+}
+
+@include pc {
+  .recruit {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 400px minmax(auto, 673px);
+    margin-bottom: 120px;
+    img {
+      object-fit: cover;
+      height: 343px;
+    }
+  }
+  .r_read {
+    padding: 0 120px;
+  }
+}
+
+//CONTACT
+.contact {
+  padding-top: 40px;
+  padding-bottom: 60px;
+  background-color: $gray;
+}
+.contact_b {
+  p {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: $normal;
+    line-height: 2;
+    margin-bottom: 30px;
+  }
+}
+
+// Footer
+footer {
+  padding: 60px 20px 30px 20px;
+  background-color: #000;
+}
+.fNav {
+  display: flex;
+  flex-wrap: wrap;
+  li {
+    margin-right: 30px;
+    margin-bottom: 10px;
+  }
+  li a {
+    font-size: 1.4rem;
+    font-family: $noto;
+    font-weight: $normal;
+    color: $white;
+  }
+}
+
+@include pc {
+  .fNav {
+    justify-content: center;
+  }
+}
