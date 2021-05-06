@@ -10,8 +10,8 @@ HamBtn.addEventListener('click', () => {
 
 // スクロールイベント
 window.addEventListener('scroll', () => {
-  let top = document.getElementById('header');
-  var window_h = window.innerHeight;
+  const top = document.getElementById('header');
+  const window_h = window.innerHeight;
   if (window_h < window.scrollY) {
     top.classList.add('view');
   } else {
